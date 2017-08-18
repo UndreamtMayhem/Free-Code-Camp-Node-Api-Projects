@@ -4,7 +4,7 @@
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>0</x>
+      <x>45</x>
       <y>0</y>
       <w>1410</w>
       <h>570</h>
@@ -15,7 +15,7 @@
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>720</x>
+      <x>765</x>
       <y>45</y>
       <w>525</w>
       <h>480</h>
@@ -26,7 +26,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
+      <x>45</x>
       <y>615</y>
       <w>315</w>
       <h>285</h>
@@ -45,7 +45,7 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
+      <x>405</x>
       <y>615</y>
       <w>315</w>
       <h>285</h>
@@ -65,7 +65,7 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>750</x>
+      <x>795</x>
       <y>615</y>
       <w>390</w>
       <h>270</h>
@@ -86,7 +86,7 @@ Responsibilities
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>0</x>
+      <x>45</x>
       <y>45</y>
       <w>525</w>
       <h>330</h>
@@ -97,7 +97,7 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
+      <x>45</x>
       <y>75</y>
       <w>525</w>
       <h>300</h>
@@ -120,7 +120,7 @@ halign=left</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>735</x>
+      <x>780</x>
       <y>105</y>
       <w>315</w>
       <h>165</h>
@@ -131,7 +131,7 @@ halign=left</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>735</x>
+      <x>780</x>
       <y>345</y>
       <w>315</w>
       <h>150</h>
@@ -145,7 +145,7 @@ RETRIVE_URL('url')</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>735</x>
+      <x>780</x>
       <y>315</y>
       <w>315</w>
       <h>180</h>
@@ -156,7 +156,7 @@ RETRIVE_URL('url')</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>735</x>
+      <x>780</x>
       <y>135</y>
       <w>315</w>
       <h>135</h>

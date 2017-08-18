@@ -1,19 +1,20 @@
 const express = require('express');
 const path = require('path');
+
 const mongoose = require('mongoose');
+
 const bodyParser = require('body-parser');
-const expressValidator = require('express-validator');
-const flash = require('connect-flash');
-const session = require('express-session');
-const passport = require('passport');
+
+
 const config = require('./config/database');
 
 
 mongoose.connect(config.database).then(
-  () => { /** ready to use. The `mongoose.connect()` promise resolves to undefined. */ 
+  () => { 
       console.log("connected");
+      
     },
-  err => { /** handle initial connection error */ 
+  err => { 
       console.log(err);}
 );
 
@@ -22,7 +23,8 @@ mongoose.connect(config.database).then(
 const app = express();
 
 // Bring in Models
-let Article = require('./models/article');
+
+let Urls = require('./models/urls');
 
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
@@ -37,68 +39,17 @@ app.use(bodyParser.json());
 // Set Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Express Session Middleware
-app.use(session({
-  secret: 'keyboard cat',
-  resave: true,
-  saveUninitialized: true
-}));
 
-// Express Messages Middleware
-app.use(require('connect-flash')());
-app.use(function (req, res, next) {
-  res.locals.messages = require('express-messages')(req, res);
-  next();
-});
-
-// Express Validator Middleware
-app.use(expressValidator({
-  errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
-      , formParam = root;
-
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
-}));
-
-// Passport Config
-require('./config/passport')(passport);
-// Passport Middleware
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.get('*', function(req, res, next){
-  res.locals.user = req.user || null;
-  next();
-});
 
 // Home Route
 app.get('/', function(req, res){
-  Article.find({}, function(err, articles){
-    if(err){
-      console.log(err);
-    } else {
-      res.render('index', {
-        title:'Articles',
-        articles: articles
-      });
-    }
-  });
+  //tempted to add recent searches 
+  res.render('index');
 });
 
 // Route Files
-let articles = require('./routes/article');
-let users = require('./routes/users');
-app.use('/articles', articles);
-app.use('/users', users);
+let url = require('./routes/url');
+app.use('/', url);
 
 // Start Server
 app.listen(3000, function(){

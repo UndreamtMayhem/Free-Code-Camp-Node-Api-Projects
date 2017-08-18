@@ -1,12 +1,25 @@
 const express = require('express');
+
 const path = require('path');
+
 const bodyParser = require('body-parser');
-let get_ip = require('ipware')().get_ip;
+
+const config = require('./config/keys');
+const mongoose = require('mongoose');
+
+// // Standard URI format: mongodb://[dbuser:dbpassword@]host:port/dbname, details set in .env
+//var uri = 'mongodb://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST+':'+process.env.PORT+'/'+process.env.DB;
+mongoose.connect(config.database).then(
+  () => { 
+      console.log("connected");
+    },
+  err => { 
+      console.log(err);}
+);
+
 
 // Init App
 const app = express();
-
-
 
 
 // Load View Engine
@@ -20,27 +33,33 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Set Public Folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));  
 
 
 // Home Route
 app.get('/', function(req, res){
-  var ip_info = get_ip(req);
-  console.log(ip_info['clientIp']);
-  //res.send(res);
-   res.send('ip: ' + req.connection.remoteAddress);
-   // user agent sorted
-   console.log(req.headers['user-agent'])
-   console.log(req.headers['accept-language']);
-   console.log(req.socket.remoteAddress);
-  //console.log(req);
+  res.render('index');
 });
-// Home Route
-app.get('/:id', function(req, res){
-  //res.send(res);
-   res.send('id: ' + req.params.id);
-  //console.log(req);
+
+
+
+/*
+// Additional 
+app.get('api/imagesearch/:image*', function(req, res){
+  // test route works  
+  res.json({'image': req.params.image,'offset': req.query});
+
+ 
 });
+*/
+
+
+
+// Route Files Test
+let imageSearch = require('./routes/imageSearch');
+app.use('/', imageSearch);
+let recentSearch = require('./routes/recentSearch');
+app.use('/', recentSearch);
 
 
 // Start Server
