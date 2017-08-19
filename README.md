@@ -14,4 +14,4 @@
 
 ## Current Project 
 - Timestamp Microservice Incomplete   *
-  - refer to projects Tab
+  - Add glitch links
