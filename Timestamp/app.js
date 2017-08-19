@@ -1,12 +1,12 @@
 /*
-  Made By Daniel Philip Johnson
-
-
+  Made By Daniel Philip Johnson: UndreamtMayhem
+  CodePen https://codepen.io/undreamtmayhem/
+  github: https://github.com/UndreamtMayhem
 */
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-let get_ip = require('ipware')().get_ip;
 
 // Init App
 const app = express();

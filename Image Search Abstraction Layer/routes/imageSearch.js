@@ -30,6 +30,9 @@ router.get('/api/imagesearch/:image*', function (req, res) {
             // then go find it and display to user
             res.json({ "message": "Error saving search term please try again" });
         }
+        else {
+            console.log("saved");
+        }
     });
 
     
